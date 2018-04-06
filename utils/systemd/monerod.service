@@ -1,0 +1,21 @@
+[Unit]
+Description=Worktips Full Node
+After=network.target
+
+[Service]
+User=worktips
+Group=worktips
+WorkingDirectory=~
+RuntimeDirectory=worktips
+
+Type=forking
+PIDFile=/run/worktips/worktipsd.pid
+
+ExecStart=/usr/bin/worktipsd --config-file /etc/worktipsd.conf \
+    --detach --pidfile /run/worktips/worktipsd.pid
+
+Restart=always
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
