@@ -2,7 +2,7 @@
 /// @author rfree (current maintainer/user in monero.cc project - most of code is from CryptoNote)
 /// @brief This is the orginal cryptonote protocol network-events handler, modified by us
 //
-// Copyright (c) 2017-2018 Haven Protocol
+// Copyright (c) 2017-2018 Worktips Protocol
 //
 // Copyright (c) 2014-2017, The Monero Project
 //
@@ -1560,7 +1560,7 @@ skip:
     if(m_synchronized.compare_exchange_strong(val_expected, true))
     {
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
-        << "You are now synchronized with the network. You may now start haven-wallet-cli." << ENDL
+        << "You are now synchronized with the network. You may now start worktips-wallet-cli." << ENDL
         << ENDL
         << "Use the \"help\" command to see the list of available commands." << ENDL
         << "**********************************************************************");

@@ -58,7 +58,7 @@ namespace daemonize
       boost::program_options::variables_map const & vm
     )
   {
-    LOG_PRINT_L0("Haven '" << HAVEN_RELEASE_NAME << "' (v" << HAVEN_VERSION_FULL << ") Daemonised");
+    LOG_PRINT_L0("Worktips '" << WORKTIPS_RELEASE_NAME << "' (v" << WORKTIPS_VERSION_FULL << ") Daemonised");
     return t_daemon{vm};
   }
 

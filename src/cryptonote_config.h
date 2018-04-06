@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2018, Haven Protocol
+// Copyright (c) 2017-2018, Worktips Protocol
 //
 // Copyright (c) 2014-2017 The Monero Project.
 //

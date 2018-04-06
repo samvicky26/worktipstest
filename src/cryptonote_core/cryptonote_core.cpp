@@ -1320,7 +1320,7 @@ namespace cryptonote
     if(!m_starter_message_showed)
     {
       std::string main_message;
-      std::string haven_ascii =
+      std::string worktips_ascii =
 
 "\n\n"
 "                                 ,####################\n"
@@ -1361,7 +1361,7 @@ namespace cryptonote
         main_message = "The daemon is running offline and will not attempt to sync to the Monero network.";
       else
         main_message = "The daemon will start synchronizing with the network. This may take a long time to complete.";
-      MGINFO_GREEN(ENDL << haven_ascii << ENDL);
+      MGINFO_GREEN(ENDL << worktips_ascii << ENDL);
       MGINFO_YELLOW(ENDL << "**********************************************************************" << ENDL
         << main_message << ENDL
         << ENDL
@@ -1437,7 +1437,7 @@ namespace cryptonote
     if (!tools::check_updates(software, buildtag, version, hash))
       return false;
 
-    if (tools::vercmp(version.c_str(), HAVEN_VERSION) <= 0)
+    if (tools::vercmp(version.c_str(), WORKTIPS_VERSION) <= 0)
       return true;
 
     std::string url = tools::get_update_url(software, subdir, buildtag, version, true);
