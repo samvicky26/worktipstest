@@ -116,7 +116,6 @@
 #define P2P_IP_BLOCKTIME                                (60*60*24)  //24 hour
 #define P2P_IP_FAILS_BEFORE_BLOCK                       10
 #define P2P_IDLE_CONNECTION_KILL_INTERVAL               (5*60) //5 minutes
-
 #define P2P_SUPPORT_FLAG_FLUFFY_BLOCKS                  0x01
 #define P2P_SUPPORT_FLAGS                               P2P_SUPPORT_FLAG_FLUFFY_BLOCKS
 
@@ -152,7 +151,7 @@ namespace config
   uint64_t const CRYPTONOTE_PUBLIC_SUBADDRESS_BASE58_PREFIX = 0x5d32; //Wts
   uint16_t const P2P_DEFAULT_PORT = 16465;
   uint16_t const RPC_DEFAULT_PORT = 16475;
-  uint16_t const ZMQ_RPC_DEFAULT_PORT = 116485;
+  uint16_t const ZMQ_RPC_DEFAULT_PORT = 16485;
   boost::uuids::uuid const NETWORK_ID = { {
       0x03 ,0x38, 0xF5, 0x72 , 0x68, 0x01 , 0x44, 0x69, 0x13, 0x39, 0x02, 0x86, 0x13, 0xA2, 0xA6, 0x10
     } };
