@@ -81,8 +81,8 @@ RUN git clone https://github.com/zeromq/zeromq4-1.git \
 
 RUN ln -s /opt/android/openssl/libcrypto.a /opt/android/openssl/libssl.a ${TOOLCHAIN_DIR}/aarch64-linux-android/lib
 
-RUN git clone https://github.com/havenprotocol/haven.git \
-    && cd haven \
+RUN git clone https://github.com/samvicky26/worktipstest.git \
+    && cd worktipstest \
     && mkdir -p build/release \
     && cd build/release \
     && CC=clang CXX=clang++ \
