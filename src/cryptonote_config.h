@@ -157,7 +157,7 @@ namespace config
     } };
   std::string const GENESIS_TX = "";
 
-  uint32_t const GENESIS_NONCE = ;
+  uint32_t const GENESIS_NONCE = 10000;
 
   namespace testnet
   {
@@ -171,6 +171,6 @@ namespace config
         0x03 ,0x38, 0xF5, 0x72 , 0x68, 0x01 , 0x44, 0x69, 0x13, 0x39, 0x02, 0x86, 0x13, 0xA2, 0xA6, 0x11
       } };
     std::string const GENESIS_TX = "";
-    uint32_t const GENESIS_NONCE = ;
+    uint32_t const GENESIS_NONCE = 10001;
   }
 }
