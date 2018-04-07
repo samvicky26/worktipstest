@@ -27,6 +27,13 @@
 # THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 # Parts of this file are originally copyright (c) 2012-2013 The Cryptonote developers and 2014-2017, The Monero Project
+list(INSERT CMAKE_MODULE_PATH 0
+  "${CMAKE_SOURCE_DIR}/cmake")
+include(CheckCCompilerFlag)
+include(CheckCXXCompilerFlag)
+include(CheckLinkerFlag)
+include(CheckLibraryExists)
+
 
 cmake_minimum_required(VERSION 2.8.7)
 
@@ -44,6 +51,31 @@ function (die msg)
 
   message(FATAL_ERROR "${BoldRed}${msg}${ColourReset}")
 endfunction ()
+
+function (add_c_flag_if_supported flag var)
+  string(REPLACE "-" "_" supported ${flag}_c)
+  check_c_compiler_flag(${flag} ${supported})
+  if(${${supported}})
+    set(${var} "${${var}} ${flag}" PARENT_SCOPE)
+  endif()
+endfunction()
+
+function (add_cxx_flag_if_supported flag var)
+  string(REPLACE "-" "_" supported ${flag}_cxx)
+  check_cxx_compiler_flag(${flag} ${supported})
+  if(${${supported}})
+    set(${var} "${${var}} ${flag}" PARENT_SCOPE)
+  endif()
+endfunction()
+
+function (add_linker_flag_if_supported flag var)
+  string(REPLACE "-" "_" supported ${flag}_ld)
+  string(REPLACE "," "_" supported ${flag}_ld)
+  check_linker_flag(${flag} ${supported})
+  if(${${supported}})
+    set(${var} "${${var}} ${flag}" PARENT_SCOPE)
+  endif()
+endfunction()
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE Release CACHE STRING "Build type" FORCE)
