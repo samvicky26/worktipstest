@@ -37,7 +37,7 @@ ENV PATH $TOOLCHAIN_DIR/arm-linux-androideabi/bin:$TOOLCHAIN_DIR/bin:$PATH
 
 ## Build BOOST
 RUN cd boost_${BOOST_VERSION} \
-    && ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale --build-dir=android32 --stagedir=android32 toolset=clang threading=multi threadapi=pthread target-os=android stage
+    && ./b2 --build-type=full link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale --build-dir=android32 --stagedir=android32 toolset=clang threading=multi threadapi=pthread target-os=android stage
 
 #INSTALL cmake (avoid 3.7 : https://github.com/android-ndk/ndk/issues/254)
 ENV CMAKE_VERSION 3.6.3
@@ -86,7 +86,8 @@ RUN git clone https://github.com/samvicky26/worktipstest.git \
     && cd worktipstest \
     && mkdir -p build/release \
     && CC=clang CXX=clang++ \
-         BOOST_ROOT=${WORKDIR}/boost_${BOOST_VERSION} BOOST_LIBRARYDIR=${WORKDIR}/boost_${BOOST_VERSION}/android32/lib/ \
+         BOOST_ROOT=${WORKDIR}/boost_${BOOST_VERSION}/ \ 
+		 BOOST_LIBRARYDIR=${WORKDIR}/boost_${BOOST_VERSION}/android32/lib/ \
          OPENSSL_ROOT_DIR=${WORKDIR}/openssl/ \
          CMAKE_INCLUDE_PATH=${WORKDIR}/cppzmq/ \
          CMAKE_LIBRARY_PATH=${WORKDIR}/zeromq4-1/.libs \

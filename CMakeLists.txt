@@ -1,4 +1,4 @@
-# Copyright (c) 2017-2018, Worktips Protocol
+# Copyright (c) 2017-2018, Worktips Coin
 #
 # All rights reserved.
 #

@@ -37,7 +37,7 @@ ENV PATH $TOOLCHAIN_DIR/aarch64-linux-android/bin:$TOOLCHAIN_DIR/bin:$PATH
 
 ## Build BOOST
 RUN cd boost_${BOOST_VERSION} \
-    && ./b2 --build-type=minimal link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale --build-dir=android64 --stagedir=android64 toolset=clang threading=multi threadapi=pthread target-os=android stage
+    && ./b2 --build-type=full link=static runtime-link=static --with-chrono --with-date_time --with-filesystem --with-program_options --with-regex --with-serialization --with-system --with-thread --with-locale --build-dir=android64 --stagedir=android64 toolset=clang threading=multi threadapi=pthread target-os=android stage
 
 #INSTALL cmake (avoid 3.7 : https://github.com/android-ndk/ndk/issues/254)
 ENV CMAKE_VERSION 3.6.3
@@ -86,10 +86,11 @@ RUN git clone https://github.com/samvicky26/worktipstest.git \
     && mkdir -p build/release \
     && cd build/release \
     && CC=clang CXX=clang++ \
-         BOOST_ROOT=${WORKDIR}/boost_${BOOST_VERSION} BOOST_LIBRARYDIR=${WORKDIR}/boost_${BOOST_VERSION}/android64/lib/ \
+         BOOST_ROOT=${WORKDIR}/boost_${BOOST_VERSION}/ \
+		 BOOST_LIBRARYDIR=${WORKDIR}/boost_${BOOST_VERSION}/android64/lib/ \
          OPENSSL_ROOT_DIR=${WORKDIR}/openssl/ \
          CMAKE_INCLUDE_PATH=${WORKDIR}/cppzmq/ \
          CMAKE_LIBRARY_PATH=${WORKDIR}/zeromq4-1/.libs \
          CXXFLAGS="-I ${WORKDIR}/zeromq4-1/include/" \
          cmake -D BUILD_TESTS=OFF -D ARCH="armv8-a" -D STATIC=ON -D BUILD_64=ON -D CMAKE_BUILD_TYPE=release -D ANDROID=true -D INSTALL_VENDORED_LIBUNBOUND=ON -D BUILD_TAG="android" ../.. \
-    && make -j3
+    && make
